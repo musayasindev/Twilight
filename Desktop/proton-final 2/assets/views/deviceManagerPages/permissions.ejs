@@ -1,0 +1,50 @@
+
+<div class="recent-sales box overflow">
+    <div class="title">Apps</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Name</li>
+ 
+            <% if(pageData) { pageData.forEach((permission) => { %>
+                <tr>
+                    <td><%= permission %></td>
+                </tr>
+                <% }) } %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xPM')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+            This feature enables you to monitor permissions of apps. To see which permission is allowed and
+            which is not. So you can tune and enhance it in order to get 100% performance from software</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+
+    
+
+</div>

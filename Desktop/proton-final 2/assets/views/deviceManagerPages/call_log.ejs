@@ -1,0 +1,107 @@
+
+<div class="recent-sales box overflow">
+        <div class="title">Call Log</div>
+        <div class="sales-details">
+
+            <ul class="details">
+                <li class="topic">Date</li>
+
+                    <% pageData.forEach((callData) => { 
+                    let date = new Date(parseInt(callData.date));
+                    let status = "UNKNOWN";
+                    if(callData.type === 1) status = "IN";
+                    if(callData.type === 2) status = "OUT";
+                    if(callData.type === 3) status = "MISSED";
+                
+                    %>
+
+                       <li><a href="#"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></a></li>
+
+                    <% }) %>
+
+            </ul>
+
+            <ul class="details">
+                <li class="topic">Phone No.</li>
+
+                    <% pageData.forEach((callData) => { 
+                    let date = new Date(parseInt(callData.date));
+                    let status = "UNKNOWN";
+                    if(callData.type === 1) status = "IN";
+                    if(callData.type === 2) status = "OUT";
+                    if(callData.type === 3) status = "MISSED";
+                
+                    %>
+
+                       <li><a href="?filter=<%= callData.phoneNo %>"><%= callData.phoneNo %></a></li>
+
+                    <% }) %>
+
+            </ul>
+
+            <ul class="details">
+                <li class="topic">Status</li>
+
+                    <% pageData.forEach((callData) => { 
+                    let date = new Date(parseInt(callData.date));
+                    let status = "UNKNOWN";
+                    if(callData.type === 1) status = "IN";
+                    if(callData.type === 2) status = "OUT";
+                    if(callData.type === 3) status = "MISSED";
+                
+                    %>
+
+                       <li><a href="#"><%= status %></a></li>
+
+                    <% }) %>
+
+            </ul>
+
+            <ul class="details">
+                <li class="topic">Duration</li>
+
+                    <% pageData.forEach((callData) => { 
+                    let date = new Date(parseInt(callData.date));
+                    let status = "UNKNOWN";
+                    if(callData.type === 1) status = "IN";
+                    if(callData.type === 2) status = "OUT";
+                    if(callData.type === 3) status = "MISSED";
+                
+                    %>
+
+                       <li><a href="#"><%= callData.duration %></a></li>
+
+                    <% }) %>
+
+            </ul>
+
+        </div>
+
+
+            <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xCL')">Update</button>
+
+
+        </div>
+
+
+        <div class="top-sales box">
+          <div class="title">About</div>
+          <ul class="top-sales-details">
+            <li>
+            <a href="#">
+              <!--<img src="images/sunglasses.jpg" alt="">-->
+              <span class="product">Using this feature you will be up to date regarding whom your target is calling to or receiving calls from.</span>
+            </a>
+          </li>
+          </ul>
+
+          <div class="button">
+            <a href="#">Learn More</a>
+          </div>
+
+        </div>
+
+
+        
+
+</div>

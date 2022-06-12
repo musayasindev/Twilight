@@ -1,0 +1,86 @@
+
+<div class="recent-sales box overflow">
+    <div class="title">contacts</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Name</li>
+
+                <% pageData.forEach((contact) => { 
+                %>
+
+                   <li><a href="#"><%= contact.name %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Number</li>
+
+                <% pageData.forEach((contact) => { 
+                %>
+
+                   <li><a href="#"><%= contact.phoneNo %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Log</li>
+
+                <% pageData.forEach((contact) => { 
+                %>
+
+                   <li><a href="<%= baseURL %>/calls?filter=<%= contact.phoneNo %>">Call Log</a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Log</li>
+
+                <% pageData.forEach((contact) => { 
+                %>
+
+                   <li><a href="<%= baseURL %>/sms?filter=<%= contact.phoneNo %>">SMS Log</a></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xCO')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+            Using this feature you will be up to date regarding whom your target is calling to or receiving calls from.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+
+    
+
+</div>

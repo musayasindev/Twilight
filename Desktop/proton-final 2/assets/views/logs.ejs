@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<% include partials/head.ejs %>
+
+
+<body style="background: #222b2c;">
+    <script>
+        gtag('event', 'screen_view', {
+            'screen_name': 'logs',
+            'app_name': 'Protonspy'
+        });
+    </script>
+    <div class="ui container">
+        <% include partials/header.ejs %>
+        <div class="ui segment inverted">
+            <div class="logs">
+                <% logs.forEach((log) => { %>
+                <div class="logitm <%= log.type %>">
+                    <%= new Date(log.time).toLocaleString('en-GB', { timeZone: 'UTC' }) %> =>
+                    <%= log.type %> | <%= log.message %> </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

