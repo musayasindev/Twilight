@@ -1,0 +1,30 @@
+.moody, .mainpartner{
+    height: 820px;
+    width: 570px;
+ 
+    border-radius: 30px;
+
+    background-color: #fff;
+
+    position: relative;
+}
+
+
+.moody-img{
+    margin-top: 132px;
+}
+
+
+.moody-head{
+    padding-top: 60px;
+
+    font-weight: 700;
+    font-size: 62px;
+    
+    line-height: 70.06px;
+}
+
+
+.moody-arrow{
+    left: 88% !important;
+}
