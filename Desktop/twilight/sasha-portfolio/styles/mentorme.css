@@ -1,0 +1,65 @@
+#mentormelink{
+    margin-top: 200px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+
+a{
+    display: flex;
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+
+.mentorme{
+    width: 1198px;
+    height: 385px;
+
+    background-color: #FFFFFF;
+
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: row;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+
+.head{
+    padding-top: 195px;
+
+    font-weight: 700;
+    font-size: 62px;
+    
+    line-height: 70.06px;
+}
+
+
+.small{
+    font-size: 18px !important;
+    line-height: 20.34px !important;
+}
+
+
+.mentorme-img{
+    position: relative;
+    bottom: 98px !important;
+
+    margin-left: 169px;
+}
+
+
+.arrow{
+    position: absolute;
+    top: 50px;
+    left: 93%;
+}
+

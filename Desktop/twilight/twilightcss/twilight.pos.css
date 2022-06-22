@@ -1,0 +1,213 @@
+                                                /* general */
+
+.tabsolute {
+  position: absolute;
+}
+
+.trelative {
+  position: relative;
+}
+
+.tfixed {
+  position: fixed;
+}
+
+                                                /* position */
+
+
+.ttop-0 {
+  top: 0px;
+}
+
+.ttop-1 {
+  top: 10%;
+}
+
+.ttop-2 {
+  top: 20%;
+}
+
+.ttop-3 {
+  top: 30%;
+}
+
+.ttop-4 {
+  top: 40%;
+}
+
+.ttop-5 {
+  top: 50%;
+}
+
+
+
+.tleft-0 {
+  left: 0px;
+}
+
+.tleft-1 {
+  left: 10%;
+}
+
+.tleft-2 {
+  left: 20%;
+}
+
+.tleft-3 {
+  left: 30%;
+}
+
+.tleft-4 {
+  left: 40%;
+}
+
+.tleft-5 {
+  left: 50%;
+}
+
+
+.tright-0 {
+  right: 0px;
+}
+
+.tright-1 {
+  right: 10%;
+}
+
+.tright-2 {
+  right: 20%;
+}
+
+.tright-3 {
+  right: 30%;
+}
+
+.tright-4 {
+  right: 40%;
+}
+
+.tright-5 {
+  right: 50%;
+}
+
+
+.tbottom-0 {
+  bottom: 0px;
+}
+
+.tbottom-1 {
+  bottom: 10%;
+}
+
+.tbottom-2 {
+  bottom: 20%;
+}
+
+.tbottom-3 {
+  bottom: 30%;
+}
+
+.tbottom-4 {
+  bottom: 40%;
+}
+
+.tbottom-5 {
+  bottom: 50%;
+}
+
+
+
+                                                /* scale */
+
+
+.tw-0 {
+    width: 0%;
+  }
+  
+  .tw-1 {
+    width: 10%;
+  }
+  
+  .tw-2 {
+    width: 20%;
+  }
+  
+  .tw-3 {
+    width: 30%;
+  }
+  
+  .tw-4 {
+    width: 40%;
+  }
+  
+  .tw-5 {
+    width: 50%;
+  }
+
+  .tw-6 {
+    width: 60%;
+  }
+  
+  .tw-7 {
+    width: 70%;
+  }
+  
+  .tw-8 {
+    width: 80%;
+  }
+  
+  .tw-9 {
+    width: 90%;
+  }
+  
+  .tw-10 {
+    width: 100%;
+  }
+
+
+
+  .tl-0 {
+    height: 0%;
+  }
+  
+  .tl-1 {
+    height: 10%;
+  }
+  
+  .tl-2 {
+    height: 20%;
+  }
+  
+  .tl-3 {
+    height: 30%;
+  }
+  
+  .tl-4 {
+    height: 40%;
+  }
+  
+  .tl-5 {
+    height: 50%;
+  }
+
+  .tl-6 {
+    height: 60%;
+  }
+  
+  .tl-7 {
+    height: 70%;
+  }
+  
+  .tl-8 {
+    height: 80%;
+  }
+  
+  .tl-9 {
+    height: 90%;
+  }
+  
+  .tl-10 {
+    height: 100%;
+  }
+
+                                                 /* end */

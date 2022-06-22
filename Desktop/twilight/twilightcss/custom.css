@@ -1,0 +1,215 @@
+* {
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    list-style: none;
+    /* image-rendering: smoothen; */
+    image-rendering: smooth;
+}
+
+@font-face {
+    font-family: lato;
+    src: url(../fonts/Lato/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: lato-bold;
+    src: url(../fonts/Lato/Lato-Black.ttf);
+}
+
+@font-face {
+    font-family: lato-light;
+    src: url(../fonts/Lato/Lato-Thin.ttf);
+}
+
+@font-face {
+    font-family: gochi;
+    src: url(../fonts/Gochi_Hand/GochiHand-Regular.ttf);
+}
+
+@font-face {
+    font-family: inter;
+    src: url(../fonts/Inter/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+
+:root {
+    --primary-bg : black;
+    --primary-txt : white;
+    --primary-border : #545454;
+
+    --secondary-bg : white;
+    --secondary-txt : black;
+    --secondary-border : rgb(189, 189, 189);
+
+    --blue-bg : rgb(25, 135, 178);
+    --blue-txt : rgb(255, 255, 255);
+    --blue-border : rgb(25, 180, 225);
+
+    --green-bg : rgb(28, 177, 117);
+    --green-txt : rgb(255, 255, 255);
+    --green-border : rgb(28, 215, 117);
+}
+
+body {
+    height: 2000px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #F1F1F1;
+    font-family: lato;
+}
+
+.horizon-wrapper {
+    width: 40%;
+}
+
+.horizon {
+    width: 100%;
+    position: relative;
+}
+
+.horizonred {
+    z-index: 1;
+    width: 110%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    filter: brightness(200%);
+    top: 0px;
+    -webkit-filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+  filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+}
+
+.horizonheader {
+    position: absolute;
+    top: 2vw;
+    left: 51px;
+    z-index: 2;
+    font-family: lato-bold;
+    font-size: 96px;
+    font-size: 5vw;
+    color: white;
+}
+
+.horizonbtn {
+    position: absolute;
+    top: 23vw;
+    left: 51px;
+    z-index: 2;
+    border-radius: 12px;
+    box-shadow: 0px 4.6px 33.4px rgba(255, 255, 255, 0.5);
+    font-family: lato;
+    width: 30%;
+    font-size: 1vw;
+    aspect-ratio: 2.2 / 1;
+    color: rgb(0, 0, 0);
+    background-color: white;
+}
+
+.graphics-main-wrapper {
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vw;
+}
+
+.graphics-main-wrapper .graphics-main {
+    position: relative;
+    filter: saturate(120%);
+}
+
+.graphics-main-wrapper .graphics-main img {
+    position: absolute;
+}
+
+.graphics-main .bluemain {
+    width: 60vw;
+    right: 60px;
+    top: 150px;
+    -webkit-filter: drop-shadow( 0px 4.6px 33.4px #2833847e);
+  filter: drop-shadow( 0px 4.6px 33.4px #2833847e);
+}
+
+.graphics-main .laptoppose {
+    width: 50vw;
+    right: 60px;
+    top: 150px;
+    z-index: 2;
+}
+
+.graphics-main .window {
+    width: 50vw;
+    right: 60px;
+    top: 30px;
+}
+
+.graphics-main .chatgroup {
+    z-index: 999999;
+    width: 15vw;
+    right: 55vw;
+    top: 250px;
+}
+
+.graphics-main .visionready {
+    z-index: 6;
+    width: 25vw;
+    right: 35vw;
+    top: 800px;
+    -webkit-filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+    filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+}
+
+.graphics-main .visionready {
+    z-index: 6;
+    width: 25vw;
+    right: 35vw;
+    top: 800px;
+}
+
+.graphics-main .blob-container {
+    z-index: 5;
+    width: 47vw;
+    height: 800px;
+    left: 0px;
+    top: 49vw;
+    -webkit-filter: drop-shadow( 0px 4.6px 33.4px #1764a77e);
+    filter: drop-shadow( 0px 4.6px 33.4px #1764a77e);
+    position: relative;
+}
+
+.blob-container .blob {
+    position: absolute;
+    top: 1%;
+    width: 47vw;
+    height: 100%;
+}
+
+.laptopposediv {
+    position: relative;
+}
+
+.laptopposediv .visionready {
+    position: absolute;
+    top: 50vw;
+    left: 40%;
+    -webkit-filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+    filter: drop-shadow( 0px 4.6px 33.4px #a717177e);
+}
+
+.blob-container .img-container {
+    position: absolute;
+    top: 50px;
+    left: 8vw;
+    background-color: beige;
+    width: 45%;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    box-shadow : 0px 4.6px 33.4px #0000007e;
+}
+
+.blob-container .img-container img {
+    height: 880px;
+    object-position: -340px 0px;
+    aspect-ratio: 1.3 / 1;
+}

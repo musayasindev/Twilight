@@ -1,0 +1,17 @@
+.unico{
+    height: 385px;
+    width: 575px;
+
+    border-radius: 30px;
+
+    position: relative;
+
+    background-color: #D3392B;
+    color: #fff !important;
+}
+
+
+
+.invert{
+    filter: invert(100%);
+}
